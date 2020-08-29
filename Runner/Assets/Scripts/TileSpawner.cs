@@ -15,17 +15,19 @@ public class TileSpawner : MonoBehaviour
     private int lastPrefabIndex;
     void Start()
     {
+        const int emptyTilesToBeSpawnedFirst = 5;
+
         activeTiles = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         tileLength = mainFloorTile.GetComponent<MeshRenderer>().bounds.size.x;
        
         Debug.Log("tile length " + tileLength);
 
-        zSpawn = -2 * tileLength;
+        zSpawn = - tileLength;
 
         for (int i = 0; i< tilesOnScreen; i++)
         {
-            if (i < 2)
+            if (i < emptyTilesToBeSpawnedFirst)
             {
                 SpawnTile(0);
             }
@@ -39,7 +41,8 @@ public class TileSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerTransform.position.z - 2 * tileLength > (zSpawn - tileLength * tilesOnScreen))
+        //2 * tileLength -- safe zone
+        if (playerTransform.position.z - 2 * tileLength > (zSpawn - tileLength * tilesOnScreen))
         {
             SpawnTile();
             RemoveTile();
@@ -49,7 +52,7 @@ public class TileSpawner : MonoBehaviour
     private void SpawnTile(int prefabIndex = -1)
 
     {
-        Debug.Log("Spawned tile " + Time.time);
+        //Debug.Log("Spawned tile " + Time.time);
         GameObject gameObject;
         if (prefabIndex == -1)
         {

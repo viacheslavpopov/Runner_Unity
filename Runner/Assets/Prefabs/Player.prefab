@@ -2010,6 +2010,7 @@ GameObject:
   - component: {fileID: 1824014520855210062}
   - component: {fileID: 1824014520855210058}
   - component: {fileID: 1824014520855210063}
+  - component: {fileID: 4813522041550949555}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2102,8 +2103,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dd9e48093def6498d6221c2407c628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3
+  playerSpeed: 5
   gravity: 10
+  speedMultiplier: 1
+  strafeForce: 50
+--- !u!114 &4813522041550949555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824014520237365567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21839cf9ce1b5eb489fe387926512e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDifficultyLevel: 5
+  scoreToNextLevel: 15
+  scoreText: {fileID: 0}
 --- !u!1 &1824014520237365569
 GameObject:
   m_ObjectHideFlags: 0
