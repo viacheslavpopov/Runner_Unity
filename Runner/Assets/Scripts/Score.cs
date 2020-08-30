@@ -5,12 +5,12 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    private float score;
-
     private int difficultyLevel = 1;
     [SerializeField] private int maxDifficultyLevel = 10;
     [SerializeField] private int scoreToNextLevel = 10;
     [SerializeField] TextMeshProUGUI scoreText;
+
+    public float PlayerScore { get; set; }
 
     void Start()
     {
@@ -20,12 +20,12 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(score >= scoreToNextLevel)
+        if(PlayerScore >= scoreToNextLevel)
         {
             LevelUp();
         }
-        score += Time.deltaTime * difficultyLevel;
-        scoreText.text = ((int)score).ToString();
+        PlayerScore += Time.deltaTime * difficultyLevel;
+        scoreText.text = ((int)PlayerScore).ToString();
     }
 
      private void LevelUp()

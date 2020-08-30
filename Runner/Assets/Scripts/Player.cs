@@ -12,9 +12,9 @@ public class Player : MonoBehaviour
     private Vector3 moveVector;
     private float verticalVelocity;
     private Rigidbody rigidBody;
-    private bool isDead;
-
     private float cameraAnimationDuration;
+
+    public bool IsDead { get; set; }
 
     void Start()
     {
@@ -28,10 +28,6 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        if (isDead)
-        {
-            return;
-        }
         if (Time.time < cameraAnimationDuration)
         {
             controller.Move(Vector3.forward * playerSpeed * Time.deltaTime);
@@ -47,28 +43,18 @@ public class Player : MonoBehaviour
         {
             verticalVelocity -= gravity;
         }
-        
 
 
-        moveVector = new Vector3(transform.position.x, 0, 0);
-        //float translation = Input.GetAxis("Horizontal") * strafeForce;
 
-        //moveVector.x = Input.GetAxis("Horizontal") * Time.deltaTime * strafeForce;
+        moveVector = Vector3.zero;
 
 
         //jump here
-        moveVector.y = verticalVelocity;
-        moveVector.z = playerSpeed;
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            moveVector.x -= strafeForce;
-        }
-        else
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            moveVector.x += strafeForce;
-        }
+       // moveVector.y = verticalVelocity;
 
+        moveVector.z = playerSpeed;
+        moveVector.x = Input.GetAxisRaw("Horizontal") * playerSpeed;
+        moveVector.y = verticalVelocity;
         controller.Move(moveVector * Time.deltaTime);
 
     }
@@ -86,6 +72,6 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
-        isDead = true;
+        IsDead = true;
     }
 }

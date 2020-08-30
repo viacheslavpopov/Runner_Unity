@@ -47,5 +47,6 @@ MonoBehaviour:
   - {fileID: 3268752720866322656, guid: 01c19dd6b334e67489fd3ef58785f379, type: 3}
   - {fileID: 8355085908818714078, guid: e0824324578f68443b6b6cabf7eb6e95, type: 3}
   - {fileID: 8270893778533855833, guid: b7c98f413bbbbd946b6fa6343ced9e0d, type: 3}
+  - {fileID: 3351103545212317624, guid: 21fbb275dd2c7df439de3ea12de9b7f2, type: 3}
   mainFloorTile: {fileID: 1132890436620377933, guid: 80501cd9c39703b44b47d3b5a7c26ca7, type: 3}
-  tilesOnScreen: 15
+  tilesOnScreen: 10
