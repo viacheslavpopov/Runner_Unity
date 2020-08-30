@@ -61,6 +61,6 @@ public class MainMenuController : MonoBehaviour
     private void OnContainerSelect(int index)
     {
         Debug.Log("Current index of the container: " + index);
-        //throw new NotImplementedException();
+        SaveManager.Instance.SelectSkin(index);
     }
 }

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         activeUI.SetActive(false);
 
         deathUI.SetActive(true);
-        Score score = FindObjectOfType<Score>();
+        Score score = activeUI.GetComponentInChildren<Score>();
         int playerScore = (int)score.PlayerScore; 
         deathUI.GetComponent<DeathScreen>().PrintPlayerScore(playerScore);
         Time.timeScale = 0;

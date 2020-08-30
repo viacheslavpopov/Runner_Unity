@@ -8,13 +8,13 @@ public class Score : MonoBehaviour
     private int difficultyLevel = 1;
     [SerializeField] private int maxDifficultyLevel = 10;
     [SerializeField] private int scoreToNextLevel = 10;
-    [SerializeField] TextMeshProUGUI scoreText;
+    TextMeshProUGUI scoreText;
 
     public float PlayerScore { get; set; }
 
     void Start()
     {
-        
+        scoreText = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
