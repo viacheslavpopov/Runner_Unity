@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         }
         if (controller.isGrounded)
         {
-            verticalVelocity = -1f;
+            verticalVelocity = -5f;
         }
         else
         {
@@ -64,11 +64,14 @@ public class Player : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.point.z > transform.position.z + controller.radius)
+        if (hit.transform.tag == "Tile")
         {
+            return;
+        }
+       
             Debug.Log("Dead");
             Die();
-        }
+        
     }
     private void Die()
     {

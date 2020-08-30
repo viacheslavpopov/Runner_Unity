@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         player = FindObjectOfType<Player>();
         deathUI.SetActive(false);
         Time.timeScale = 1;
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(SceneManager.GetActiveScene().name != "Game")
+        {
+            return;
+        }
         if (player.IsDead)
         {
             Die();
@@ -49,4 +54,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+
 }
