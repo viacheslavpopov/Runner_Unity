@@ -5,73 +5,88 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 1f;
-    [SerializeField] float gravity = 10f;
-    [SerializeField] float speedMultiplier = 2f;
+    [SerializeField] float speedIncrement = 2f;
     [SerializeField] float strafeForce = 1f;
-    private CharacterController controller;
+    [SerializeField] float groundDistance = 0.2f;
+    [SerializeField] float jumpHeight = 2f;
+    [SerializeField] LayerMask ground;
+
+
     private Vector3 moveVector;
+    private bool isGrounded = true;
     private float verticalVelocity;
     private Rigidbody rigidBody;
     private float cameraAnimationDuration;
+    private Transform groundChecker;
 
     public bool IsDead { get; set; }
 
+    private void Awake()
+    {
+        
+
+        
+    }
     void Start()
     {
-        cameraAnimationDuration = FindObjectOfType<Camera>().AnimationDuration;
-        controller = GetComponent<CharacterController>();
+
+
         rigidBody = GetComponent<Rigidbody>();
-        
+       // groundChecker.GetComponent<CapsuleCollider>();
+        cameraAnimationDuration = FindObjectOfType<Camera>().AnimationDuration;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, ground, QueryTriggerInteraction.Ignore);
 
         if (Time.time < cameraAnimationDuration)
         {
-            controller.Move(Vector3.forward * playerSpeed * Time.deltaTime);
-           
+           // controller.Move(Vector3.forward * playerSpeed * Time.deltaTime);
+            rigidBody.velocity = Vector3.forward * Time.deltaTime * playerSpeed * playerSpeed;
             return;
 
         }
-        if (controller.isGrounded)
-        {
-            verticalVelocity = -5f;
-        }
-        else
-        {
-            verticalVelocity -= gravity;
-        }
-
 
 
         moveVector = Vector3.zero;
 
-
         //jump here
-       // moveVector.y = verticalVelocity;
 
         moveVector.z = playerSpeed;
-        moveVector.x = Input.GetAxisRaw("Horizontal") * playerSpeed;
+        moveVector.x = Input.GetAxisRaw("Horizontal") * strafeForce;
         moveVector.y = verticalVelocity;
-        controller.Move(moveVector * Time.deltaTime);
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    Debug.Log("Dash");
+        //    Vector3 dashVelocity = Vector3.Scale(transform.right, strafeForce * new Vector3((Mathf.Log(1f / (Time.deltaTime * rigidBody.drag + 1)) / -Time.deltaTime), 0, (Mathf.Log(1f / (Time.deltaTime * rigidBody.drag + 1)) / -Time.deltaTime)));
+        //    rigidBody.AddForce(dashVelocity, ForceMode.VelocityChange);
+        //}
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rigidBody.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+        }
+        rigidBody.velocity = new Vector3(moveVector.x, 0, moveVector.z) * Time.deltaTime * playerSpeed;
+
 
     }
 
 
-    public void IncreasePlayerSpeed() { playerSpeed += 1 * speedMultiplier; }
+    public void IncreasePlayerSpeed() { playerSpeed += speedIncrement; }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (hit.transform.tag == "Tile")
+        if (collision.transform.tag == "Tile")
         {
             return;
         }
-       
-            Debug.Log("Dead");
-            Die();
-        
+
+        Debug.Log("Dead");
+        Die();
+
     }
     private void Die()
     {

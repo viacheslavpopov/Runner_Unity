@@ -8,8 +8,15 @@ public class PlayerSpawnScript : MonoBehaviour
     
     void Awake()
     {
-        GameObject gameObject = Instantiate(playerPrefab[SaveManager.Instance.GetSkin()] as GameObject);
-       
+        if (SaveManager.Instance != null)
+        {
+            GameObject gameObject = Instantiate(playerPrefab[SaveManager.Instance.GetSkin()] as GameObject);
+            //gameObject.transform.position = new Vector3(0, 1f, 0);
+        }
+        else
+        {
+            GameObject gameObject = Instantiate(playerPrefab[0] as GameObject);
+        }
     }
 
 }
