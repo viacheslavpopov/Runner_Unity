@@ -860,7 +860,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3358104195359880225}
-  - component: {fileID: 3358104195365597633}
   - component: {fileID: 3358104195985480052}
   - component: {fileID: 3358104195985480049}
   - component: {fileID: -1569922048445488189}
@@ -889,26 +888,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &3358104195365597633
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3358104195359778817}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 5522812681064789136, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
-  m_Animations:
-  - {fileID: -5252816984213320552, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
-  - {fileID: 2667949614841947897, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
-  - {fileID: 5522812681064789136, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
-  - {fileID: 5539831331247536789, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
-  - {fileID: 6720303635017113406, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
 --- !u!95 &3358104195985480052
 Animator:
   serializedVersion: 3
@@ -918,7 +897,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3358104195359778817}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
   m_Controller: {fileID: 9100000, guid: 511bc48c71cdf2e43909c70ad861b430, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -940,11 +919,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dd9e48093def6498d6221c2407c628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 15
+  playerSpeed: 200
   speedIncrement: 1
-  strafeForce: 15
-  groundDistance: 0.2
-  jumpHeight: 2
+  strafeForce: 1
+  groundDistance: 0.1
+  jumpHeight: 80
+  gravityMultiplier: 20
   ground:
     serializedVersion: 2
     m_Bits: 256
@@ -956,10 +936,10 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3358104195359778817}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    [SerializeField] private float animationDuration = 3f;
+    public float animationDuration = 3f;
 
     private Transform playerLocation;
     private Vector3 startOffset;

@@ -42,7 +42,7 @@ public class TileSpawner : MonoBehaviour
     void Update()
     {
         //2 * tileLength -- safe zone
-        if (playerTransform.position.z - 2 * tileLength > (zSpawn - tileLength * tilesOnScreen))
+        if (playerTransform.position.z - tileLength > (zSpawn - tileLength * tilesOnScreen))
         {
             SpawnTile();
             RemoveTile();

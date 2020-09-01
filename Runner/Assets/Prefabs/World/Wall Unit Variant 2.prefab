@@ -258,7 +258,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.2809329
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 460226, guid: 57abdd11cedcad8478c764228178c11f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389662, guid: 57abdd11cedcad8478c764228178c11f, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429052, guid: 57abdd11cedcad8478c764228178c11f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6429052, guid: 57abdd11cedcad8478c764228178c11f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 57abdd11cedcad8478c764228178c11f, type: 3}
 --- !u!4 &2159685240232700625 stripped
 Transform:
