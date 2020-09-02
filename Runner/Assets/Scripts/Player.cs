@@ -55,8 +55,17 @@ public class Player : MonoBehaviour
         moveVector = Vector3.zero;
 
         moveVector.z = 1;
-        moveVector.x = Input.GetAxisRaw("Horizontal") * strafeForce * playerSpeed/2 * Time.deltaTime;
-
+        //moveVector.x = Input.GetAxisRaw("Horizontal") * strafeForce * playerSpeed/2 * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+           //moveVector.x = -1 * strafeForce * playerSpeed / 2 * Time.deltaTime;
+            rigidBody.AddForce(Vector3.left  * strafeForce , ForceMode.VelocityChange);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            //moveVector.x = 1 * strafeForce * playerSpeed / 2 * Time.deltaTime;
+            rigidBody.AddForce(Vector3.right * strafeForce, ForceMode.VelocityChange);
+        }
         // strafe
         //if (Input.GetKeyDown(KeyCode.D))
         //{

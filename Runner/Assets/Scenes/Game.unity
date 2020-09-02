@@ -248,9 +248,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8380919738198811060, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
+      propertyPath: tilePrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8380919738198811060, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
       propertyPath: tilePrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 6889462075522405956, guid: 84e4f7dc44d465f4584b4716982205bd, type: 3}
+    - target: {fileID: 8380919738198811060, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
+      propertyPath: tilesOnScreen
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8380919738198811060, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
+      propertyPath: tilePrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 3781607221553786245, guid: f00bc4c42ff39374887b49d3154eb937, type: 3}
+    - target: {fileID: 8380919738198811060, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
+      propertyPath: mainFloorTile
+      value: 
+      objectReference: {fileID: 1132890436620377933, guid: 80501cd9c39703b44b47d3b5a7c26ca7, type: 3}
     - target: {fileID: 8380919738198811061, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
       propertyPath: m_Name
       value: Tile Manager

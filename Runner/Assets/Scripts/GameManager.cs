@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject activeUI;
     [SerializeField] GameObject deathUI;
 
+    private void Awake()
+    {
+#if UNITY_EDITOR
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 60;
+#endif
+    }
 
     private Player player;
     // Start is called before the first frame update
