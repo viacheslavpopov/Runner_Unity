@@ -1,12 +1,15 @@
 # Runner_Unity
  A classic runner game in Unity 3D
 
- - Use horizontal controller to dodge obstacles
+ - Use A,D  to dodge obstacles
+ - Use Space to jump
  - You can choose your skin from the shop now
  - The game is potentially endless
  
 Work in progress
+
 Added the functionality to auto store user prefferences in an xml save file.
+
  
 ![runner_1](https://user-images.githubusercontent.com/52078084/91668335-ad71a180-eb14-11ea-8b93-07e582deedab.png)
 
