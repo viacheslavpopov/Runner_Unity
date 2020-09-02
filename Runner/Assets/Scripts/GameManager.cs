@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject activeUI;
     [SerializeField] GameObject deathUI;
-
+    [SerializeField] private bool isInvulnerable; 
     private void Awake()
     {
 #if UNITY_EDITOR
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        
         Application.targetFrameRate = 60;
 #endif
     }
@@ -49,13 +50,16 @@ public class GameManager : MonoBehaviour
     }
     public void Die()
     {
-        activeUI.SetActive(false);
+        if (!isInvulnerable)
+        {
+            activeUI.SetActive(false);
 
-        deathUI.SetActive(true);
-        Score score = activeUI.GetComponentInChildren<Score>();
-        int playerScore = (int)score.PlayerScore; 
-        deathUI.GetComponent<DeathScreen>().PrintPlayerScore(playerScore);
-        Time.timeScale = 0;
+            deathUI.SetActive(true);
+            Score score = activeUI.GetComponentInChildren<Score>();
+            int playerScore = (int)score.PlayerScore;
+            deathUI.GetComponent<DeathScreen>().PrintPlayerScore(playerScore);
+            Time.timeScale = 0;
+        }
     }
     public void ToMenu()
     {

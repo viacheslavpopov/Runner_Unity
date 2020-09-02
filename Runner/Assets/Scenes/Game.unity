@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 6889462075522405956, guid: 84e4f7dc44d465f4584b4716982205bd, type: 3}
     - target: {fileID: 8380919738198811060, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
       propertyPath: tilesOnScreen
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8380919738198811060, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
       propertyPath: tilePrefabs.Array.data[4]
@@ -317,6 +317,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
+--- !u!1 &1136906336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8380919738198811061, guid: abd5dc7fb327c6346b42620691a1805c, type: 3}
+  m_PrefabInstance: {fileID: 597206702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1136906339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136906336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856868e7d4586e34d835ccb2dfca4535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - prefab: {fileID: 3268752720866322656, guid: 01c19dd6b334e67489fd3ef58785f379, type: 3}
+    size: 10
+  - prefab: {fileID: 8355085908818714078, guid: e0824324578f68443b6b6cabf7eb6e95, type: 3}
+    size: 6
+  - prefab: {fileID: 8270893778533855833, guid: b7c98f413bbbbd946b6fa6343ced9e0d, type: 3}
+    size: 6
+  - prefab: {fileID: 3781607221553786245, guid: f00bc4c42ff39374887b49d3154eb937, type: 3}
+    size: 6
+  - prefab: {fileID: 6889462075522405956, guid: 84e4f7dc44d465f4584b4716982205bd, type: 3}
+    size: 6
 --- !u!1 &1956874881 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5907385913101027723, guid: 9ea23cb95ed99eb4db1a4a121a6a0139, type: 3}
@@ -417,6 +445,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Active UI
       objectReference: {fileID: 0}
+    - target: {fileID: 9140103812398756675, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
+      propertyPath: maxDifficultyLevel
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140103812398756675, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
+      propertyPath: scoreToNextLevel
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
 --- !u!1001 &2320871058197525387
@@ -482,6 +518,10 @@ PrefabInstance:
       propertyPath: deathUI
       value: 
       objectReference: {fileID: 1956874881}
+    - target: {fileID: 2320871058522862815, guid: 9e131131243492d45bf3530f85cfbd17, type: 3}
+      propertyPath: isInvulnerable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e131131243492d45bf3530f85cfbd17, type: 3}
 --- !u!1001 &3147335865727412008

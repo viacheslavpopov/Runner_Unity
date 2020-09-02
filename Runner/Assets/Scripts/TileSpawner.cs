@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class TileSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] tilePrefabs;
+
     [SerializeField] GameObject mainFloorTile;
     [SerializeField] int tilesOnScreen = 7;
 
     private Transform playerTransform;
     private float zSpawn;
     private float tileLength;
-    private List<GameObject> activeTiles;
+
     private int lastPrefabIndex;
+    private Queue<GameObject> tileQueue;
+
+    private ObjectPool pool;
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
+        pool = GetComponent<ObjectPool>();
+        tileQueue = new Queue<GameObject>();
         const int emptyTilesToBeSpawnedFirst = 5;
 
-        activeTiles = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         tileLength = mainFloorTile.GetComponent<MeshRenderer>().bounds.size.x;
        
@@ -45,45 +53,41 @@ public class TileSpawner : MonoBehaviour
         if (playerTransform.position.z - tileLength > (zSpawn - tileLength * tilesOnScreen))
         {
             SpawnTile();
-            RemoveTile();
+            GameObject tileToDespawn = tileQueue.Dequeue();
+            tileToDespawn.SetActive(false);
         }
     }
 
-    private void SpawnTile(int prefabIndex = -1)
-
+    private void SpawnTile(int index = -1)
     {
-        //Debug.Log("Spawned tile " + Time.time);
-        GameObject gameObject;
-        if (prefabIndex == -1)
+
+        GameObject item;
+        int tag = PickRandomTileIndex();
+        if (index == 0)
         {
-            gameObject = Instantiate(tilePrefabs[PickRandomTileIndex()] as GameObject);
+            item = pool.SpawnFromPool(0, Vector3.forward * zSpawn, Quaternion.identity);
         }
         else
         {
-            gameObject = Instantiate(tilePrefabs[prefabIndex] as GameObject);
+            item = pool.SpawnFromPool(tag, Vector3.forward * zSpawn, Quaternion.identity);
         }
-        gameObject.transform.SetParent(transform);
-        gameObject.transform.position = Vector3.forward * zSpawn;
+        tileQueue.Enqueue(item);
+
         zSpawn += tileLength;
 
-        activeTiles.Add(gameObject);
-    }
-    private void RemoveTile()
-    {
-        Destroy(activeTiles[0]);
-        activeTiles.RemoveAt(0);
     }
 
     private int PickRandomTileIndex()
     {
-        if(tilePrefabs.Length < 2)
+        int range = pool.pools.Count;
+        if(range < 2)
         {
             return 0;
         }
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)
         {
-            randomIndex = Random.Range(0, tilePrefabs.Length);
+            randomIndex = Random.Range(0, range);
         }
         lastPrefabIndex = randomIndex;
         return randomIndex;
