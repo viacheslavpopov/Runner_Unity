@@ -921,10 +921,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 200
   speedIncrement: 30
-  strafeForce: 60
+  strafeForce: 0.6
   groundDistance: 0.15
   jumpHeight: 200
   gravityMultiplier: 40
+  jumpSensitivityThreshold: 0.3
   ground:
     serializedVersion: 2
     m_Bits: 256
@@ -937,7 +938,7 @@ Rigidbody:
   m_GameObject: {fileID: 3358104195359778817}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 0
+  m_Drag: 0.66
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0

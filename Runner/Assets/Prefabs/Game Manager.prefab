@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae017d04057b155448e1561b0245a9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeUI: {fileID: 0}
-  deathUI: {fileID: 0}
+  activeUI: {fileID: 6083660320010070618, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
+  deathUI: {fileID: 5907385913101027723, guid: 9ea23cb95ed99eb4db1a4a121a6a0139, type: 3}
+  isInvulnerable: 0

@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Speed & Strafe")]
     [SerializeField] float playerSpeed = 1f;
     [SerializeField] float speedIncrement = 2f;
     [SerializeField] float strafeForce = 1f;
+    [Header("Jump & Mass")]
     [SerializeField] float groundDistance = 0.2f;
     [SerializeField] float jumpHeight = 2f;
     public float gravityMultiplier = 10f;
+    public float jumpSensitivityThreshold = .5f;
     [SerializeField] LayerMask ground;
-
+    [Space]
+   //public VirtualJoystick joystick;
 
     private Vector3 moveVector;
     private bool isGrounded = true;
@@ -19,17 +23,12 @@ public class Player : MonoBehaviour
     private float cameraAnimationDuration;
     private Animator animator;
     private float timeToRestrictControls;
+    VirtualJoystick joystick;
     public bool IsDead { get; set; }
 
-    private void Awake()
-    {
-        
-
-        
-    }
     void Start()
     {
-
+        joystick = FindObjectOfType<VirtualJoystick>();
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         cameraAnimationDuration = FindObjectOfType<Camera>().animationDuration;
@@ -42,30 +41,21 @@ public class Player : MonoBehaviour
     {
         if (timeToRestrictControls < cameraAnimationDuration)
         {
-            // controller.Move(Vector3.forward * playerSpeed * Time.deltaTime);
             rigidBody.velocity = Vector3.forward * Time.deltaTime * playerSpeed;
             timeToRestrictControls += Time.deltaTime;
             return;
 
         }
-        
+        Debug.Log("Joystic last input " + joystick.Horizontal + " " + joystick.Vertical);
 
         isGrounded = Physics.CheckSphere(transform.position, groundDistance,  ground, QueryTriggerInteraction.Ignore);
 
         moveVector = Vector3.zero;
 
         moveVector.z = 1;
-        //moveVector.x = Input.GetAxisRaw("Horizontal") * strafeForce * playerSpeed/2 * Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-           //moveVector.x = -1 * strafeForce * playerSpeed / 2 * Time.deltaTime;
-            rigidBody.AddForce(Vector3.left  * strafeForce , ForceMode.VelocityChange);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            //moveVector.x = 1 * strafeForce * playerSpeed / 2 * Time.deltaTime;
-            rigidBody.AddForce(Vector3.right * strafeForce, ForceMode.VelocityChange);
-        }
+
+
+        moveVector.x = joystick.Horizontal * strafeForce;
         // strafe
         //if (Input.GetKeyDown(KeyCode.D))
         //{
@@ -75,12 +65,13 @@ public class Player : MonoBehaviour
         //}
 
         // jump here
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (joystick.Vertical > jumpSensitivityThreshold
+            && isGrounded)
         {
-            Debug.Log("Jump");
             animator.SetTrigger("Jump");
             rigidBody.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
         }
+        // gravity
         if (!isGrounded)
         {
             rigidBody.AddForce(Vector3.down * gravityMultiplier *  -Physics.gravity.y, ForceMode.Force);

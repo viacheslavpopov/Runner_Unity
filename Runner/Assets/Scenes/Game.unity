@@ -238,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &597206702
 PrefabInstance:
@@ -387,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1776887915533961081, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1776887915533961081, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -441,17 +441,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1830103045361076184, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830103045361076184, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.12554932
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397615714536120014, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6083660320010070618, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
       propertyPath: m_Name
       value: Active UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 9140103812398756675, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
-      propertyPath: maxDifficultyLevel
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9140103812398756675, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
-      propertyPath: scoreToNextLevel
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c2b11d753c4dc34bb34204c3b340633, type: 3}
@@ -520,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 1956874881}
     - target: {fileID: 2320871058522862815, guid: 9e131131243492d45bf3530f85cfbd17, type: 3}
       propertyPath: isInvulnerable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e131131243492d45bf3530f85cfbd17, type: 3}
