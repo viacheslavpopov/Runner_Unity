@@ -14,17 +14,16 @@ public class ObjectPool : MonoBehaviour
     }
 
     public List<Pool> pools;
-    public Dictionary<int, Queue<GameObject>> poolDictionary;
+    public Dictionary<int, Queue<GameObject>> poolDictionary = new Dictionary<int, Queue<GameObject>>();
 
-    virtual protected void Start()
+    private void Awake()
     {
-        poolDictionary = new Dictionary<int, Queue<GameObject>>();
 
-        for (int index = 0; index < pools.Count; index ++)
+        for (int index = 0; index < pools.Count; index++)
         {
 
             Queue<GameObject> objectPool = new Queue<GameObject>();
-            for (int i=0; i<pools[index].size; i++)
+            for (int i = 0; i < pools[index].size; i++)
             {
                 GameObject gameObject = Instantiate(pools[index].prefab);
                 gameObject.SetActive(false);
@@ -32,12 +31,17 @@ public class ObjectPool : MonoBehaviour
                 objectPool.Enqueue(gameObject);
             }
             poolDictionary.Add(index, objectPool);
-            Debug.Log("Dictionary size : " + poolDictionary.Count + ", key: " + index);
+
         }
+        Debug.Log("Number of different pools: " + poolDictionary.Count);
+    }
+    void Start()
+    {
+
 
     }
 
-    virtual public GameObject SpawnFromPool(int tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(int tag, Vector3 position, Quaternion rotation)
 
     {
         Debug.Log("In spawn from pool");
@@ -57,7 +61,7 @@ public class ObjectPool : MonoBehaviour
 
         return objectToSpawn;
     }
-   virtual public void ReturnToPool(int poolToReturnTo = 0)
+   public void ReturnToPool(int poolToReturnTo = 0)
     {
         Debug.Log("Pool to return to: " + poolToReturnTo);
         GameObject objectToDespawn = poolDictionary[poolToReturnTo].Dequeue();

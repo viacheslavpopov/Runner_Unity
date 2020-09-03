@@ -18,11 +18,11 @@ public class TileSpawner : MonoBehaviour
     private ObjectPool pool;
     private void Awake()
     {
-        
+        pool = GetComponent<ObjectPool>();
     }
     void Start()
     {
-        pool = GetComponent<ObjectPool>();
+        
         tileQueue = new Queue<GameObject>();
         const int emptyTilesToBeSpawnedFirst = 5;
 
