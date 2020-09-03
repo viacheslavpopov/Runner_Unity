@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject activeUI;
-    [SerializeField] GameObject deathUI;
-    [SerializeField] private bool isInvulnerable; 
+    public GameObject activeUI;
+    public GameObject deathUI;
+    [SerializeField] private bool isInvulnerable;
+
     private void Awake()
     {
 #if UNITY_EDITOR
@@ -53,10 +54,17 @@ public class GameManager : MonoBehaviour
         if (!isInvulnerable)
         {
             activeUI.SetActive(false);
-
             deathUI.SetActive(true);
+
             Score score = activeUI.GetComponentInChildren<Score>();
             int playerScore = (int)score.PlayerScore;
+
+            if(SaveManager.Instance != null)
+            {
+                SaveManager.Instance.AttemptToSetHighscore(playerScore);
+                SaveManager.Instance.AddMoney(playerScore);
+            }
+
             deathUI.GetComponent<DeathScreen>().PrintPlayerScore(playerScore);
             Time.timeScale = 0;
         }

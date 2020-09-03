@@ -648,6 +648,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7900957869346673727, guid: 127efc6a588e06b4b8b95e38bdc1758b, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900957869346673727, guid: 127efc6a588e06b4b8b95e38bdc1758b, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900957869346673727, guid: 127efc6a588e06b4b8b95e38bdc1758b, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.6415094
+      objectReference: {fileID: 0}
     - target: {fileID: 8942720846676162819, guid: 127efc6a588e06b4b8b95e38bdc1758b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

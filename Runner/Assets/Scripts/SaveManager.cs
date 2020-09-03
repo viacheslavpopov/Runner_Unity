@@ -36,6 +36,28 @@ public class SaveManager : MonoBehaviour
         state.skinNumber = index;
         Save();
     }
+    public void AttemptToSetHighscore(int newHighscore)
+    {
+        if (newHighscore > state.highscore)
+        {
+            state.highscore = newHighscore;
+            Save();
+        }
+         
+    }
+    public void AddMoney(int ammount)
+    {
+        state.currentMoney += ammount;
+        Save();
+    }
+    public int GetCurrentMoney()
+    {
+        return state.currentMoney;
+    }
+    public int GetHighscore()
+    {
+        return state.highscore;
+    }
     public int GetSkin()
     {
         return state.skinNumber;

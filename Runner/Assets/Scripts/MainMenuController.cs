@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] Transform shopPanel;
     [SerializeField] GameObject menuCanvas;
     [SerializeField] GameObject shopCanvas;
+    public TextMeshProUGUI highscoreText;
+    public TextMeshProUGUI currentMoneyText;
 
+    private const string CurrentMoneyString = "Current Money: ";
+    private const string HighscoreString = "Highest Score: ";
     private void Start()
     {
         shopCanvas.SetActive(false);
         InitializeShop();
+        InitializeStats();
     }
     public void ToShop()
     {
@@ -62,5 +68,10 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Current index of the container: " + index);
         SaveManager.Instance.SelectSkin(index);
+    }
+    void InitializeStats()
+    {
+        currentMoneyText.text = CurrentMoneyString + SaveManager.Instance.GetCurrentMoney();
+        highscoreText.text = HighscoreString + SaveManager.Instance.GetHighscore();
     }
 }

@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (timeToRestrictControls < cameraAnimationDuration)
@@ -46,14 +45,11 @@ public class Player : MonoBehaviour
             return;
 
         }
-        Debug.Log("Joystic last input " + joystick.Horizontal + " " + joystick.Vertical);
 
         isGrounded = Physics.CheckSphere(transform.position, groundDistance,  ground, QueryTriggerInteraction.Ignore);
 
         moveVector = Vector3.zero;
-
         moveVector.z = 1;
-
 
         moveVector.x = joystick.Horizontal * strafeForce;
         // strafe
