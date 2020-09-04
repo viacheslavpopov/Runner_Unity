@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TileSpawner : MonoBehaviour
@@ -22,18 +21,18 @@ public class TileSpawner : MonoBehaviour
     }
     void Start()
     {
-        
+
         tileQueue = new Queue<GameObject>();
         const int emptyTilesToBeSpawnedFirst = 5;
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         tileLength = mainFloorTile.GetComponent<MeshRenderer>().bounds.size.x;
-       
+
         Debug.Log("tile length " + tileLength);
 
-        zSpawn = - tileLength;
+        zSpawn = -tileLength;
 
-        for (int i = 0; i< tilesOnScreen; i++)
+        for (int i = 0; i < tilesOnScreen; i++)
         {
             if (i < emptyTilesToBeSpawnedFirst)
             {
@@ -80,7 +79,7 @@ public class TileSpawner : MonoBehaviour
     private int PickRandomTileIndex()
     {
         int range = pool.pools.Count;
-        if(range < 2)
+        if (range < 2)
         {
             return 0;
         }
@@ -93,4 +92,3 @@ public class TileSpawner : MonoBehaviour
         return randomIndex;
     }
 }
- 

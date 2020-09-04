@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -35,11 +34,6 @@ public class ObjectPool : MonoBehaviour
         }
         Debug.Log("Number of different pools: " + poolDictionary.Count);
     }
-    void Start()
-    {
-
-
-    }
 
     public GameObject SpawnFromPool(int tag, Vector3 position, Quaternion rotation)
 
@@ -48,7 +42,7 @@ public class ObjectPool : MonoBehaviour
         if (!poolDictionary.ContainsKey(tag))
         {
             Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
- 
+
         }
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
@@ -61,7 +55,7 @@ public class ObjectPool : MonoBehaviour
 
         return objectToSpawn;
     }
-   public void ReturnToPool(int poolToReturnTo = 0)
+    public void ReturnToPool(int poolToReturnTo = 0)
     {
         Debug.Log("Pool to return to: " + poolToReturnTo);
         GameObject objectToDespawn = poolDictionary[poolToReturnTo].Dequeue();

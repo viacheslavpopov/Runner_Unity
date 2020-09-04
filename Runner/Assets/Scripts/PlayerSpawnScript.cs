@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerSpawnScript : MonoBehaviour
 {
-    [SerializeField] GameObject[] playerPrefab;
+    public Player player;
+   public PlayerSkin[] skins;
     
+    //need to rethink this, no need for 2 lists - 1 here and one in shop
     void Awake()
     {
-        if (SaveManager.Instance != null)
-        {
-            GameObject gameObject = Instantiate(playerPrefab[SaveManager.Instance.GetSkin()] as GameObject);
-            //gameObject.transform.position = new Vector3(0, 1f, 0);
-        }
-        else
-        {
-            GameObject gameObject = Instantiate(playerPrefab[0] as GameObject);
+        if (SaveManager.Instance != null) {
+            int skinIndex = SaveManager.Instance.GetSkin();
+            
+                player.playerSkin = skins[skinIndex];
+            Debug.Log("Player skin should change in : " + player.playerSkin);
         }
     }
 

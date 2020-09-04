@@ -11,6 +11,7 @@ public class SaveManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Instance = this;
         Load();
+        //ResetStats();
 
     }
 
@@ -45,9 +46,18 @@ public class SaveManager : MonoBehaviour
         }
          
     }
+    public void ResetStats()
+    {
+        state.currentMoney = 0;
+        state.highscore = 0;
+        Save();
+    }
     public void AddMoney(int ammount)
     {
-        state.currentMoney += ammount;
+        Debug.Log("Add money: " + ammount);
+       int temp = state.currentMoney;
+        temp += ammount;
+        state.currentMoney = temp;
         Save();
     }
     public int GetCurrentMoney()

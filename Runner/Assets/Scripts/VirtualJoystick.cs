@@ -1,6 +1,6 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
@@ -16,9 +16,9 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     public void OnPointerDown(PointerEventData eventData)
     {
 
-        joystickImage.color = new Color32(80,80,80,255);
+        joystickImage.color = new Color32(80, 80, 80, 255);
         OnDrag(eventData);
-       
+
     }
     public void OnPointerUp(PointerEventData eventData)
     {
@@ -37,19 +37,19 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
             position.y = (position.y / backgroundImage.rectTransform.sizeDelta.y);
 
             inputVector = new Vector3(position.x * 2 + 1, 0, position.y * 2 - 1);
-            if(inputVector.magnitude > 1)
+            if (inputVector.magnitude > 1)
             {
                 inputVector = inputVector.normalized;
             }
             //backgroundImage.rectTransform.sizeDelta.x / 3  -  - divided by for the visual so the knob will not go too far, but the actual value will remain [-1, 1]
             joystickImage.rectTransform.anchoredPosition =
-                new Vector3(inputVector.x * (backgroundImage.rectTransform.sizeDelta.x / 3),inputVector.z * (backgroundImage.rectTransform.sizeDelta.y / 3), 0);
+                new Vector3(inputVector.x * (backgroundImage.rectTransform.sizeDelta.x / 3), inputVector.z * (backgroundImage.rectTransform.sizeDelta.y / 3), 0);
 
         }
 
-    
+
     }
-    
+
     public float Horizontal
     {
         get
